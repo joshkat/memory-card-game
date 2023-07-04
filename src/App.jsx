@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+
 import CardsView from "./components/CardsView";
-import "./App.css";
+import "./css/App.css";
 
 function App() {
   const [idArray, setIdArray] = useState([]);

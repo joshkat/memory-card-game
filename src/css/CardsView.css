@@ -5,6 +5,10 @@
   justify-items: center;
 }
 
+.invisible{
+  display: none;
+}
+
 @media screen and (max-width: 850px) {
   .card-view-root {
     grid-template-columns: repeat(3, 1fr);
