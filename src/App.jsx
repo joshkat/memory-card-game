@@ -1,33 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import CardsView from "./components/CardsView";
 import "./App.css";
 
 function App() {
+  const [idArray, setIdArray] = useState([]);
   useEffect(() => {
-    fetch_img();
+    //get 12 numbers to use for game
+    const tempArray = [];
+    for (let i = 0; i < 12; i++) {
+      const randomId = Math.floor(Math.random() * 151 + 1);
+
+      //prevents duplicates
+      if (tempArray.includes(randomId)) {
+        i--;
+      } else {
+        tempArray.push(randomId);
+      }
+    }
+    setIdArray(tempArray);
   }, []);
 
-  function fetch_img() {
-    const endpoint = `https://pokeapi.co/api/v2/pokemon/${
-      Math.floor(Math.random() * 151) + 1
-    }`;
-
-    fetch(endpoint)
-      .then((response) => response.json())
-      .then(
-        (json) =>
-          (document.querySelector("img").src = json.sprites.front_default)
-      )
-      .catch((error) => console.error(error));
-  }
   return (
     <>
-      <div>This is from within the App folder!!!!</div>
-      <p>
-        Here is an image of a random pokemon which was taken from the PokeAPI:
-      </p>
-      <img src="" alt="poke_img" className="poke_img" />
-      <br />
-      <button onClick={fetch_img}>Change the Pokemon</button>
+      <CardsView idArray={idArray} />
     </>
   );
 }
