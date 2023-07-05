@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <CardsView idArray={idArray} />
+      <CardsView idArray={idArray} setIdArray={setIdArray}/>
     </>
   );
 }
