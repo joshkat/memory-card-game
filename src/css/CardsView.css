@@ -1,5 +1,7 @@
 .card-view-root {
   display: grid;
+  height: max-content;
+  width: 75%;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
   justify-items: center;
@@ -13,16 +15,34 @@
   .card-view-root {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .card-root{
+    height: 125px;
+  }
+
+  .card-root img{
+    height: 80px;
+  }
 }
 
 @media screen and (max-width: 650px) {
   .card-view-root {
-    grid-template-columns: repeat(2, 1fr);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 85%;
   }
 }
 
 @media screen and (max-width: 450px) {
   .card-view-root {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-root{
+    height: 95px;
+  }
+
+  .card-root img{
+    height: 50px;
   }
 }

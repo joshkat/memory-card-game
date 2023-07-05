@@ -1,13 +1,18 @@
 import PropTypes from "prop-types";
+import "../css/Header.css";
 
 export default function Header({score, highScore}){
     return (
         <>
-        <header>
-            <img src="" alt="logo" />
-            <span>Score: {score}</span>
-            <span>High Score: {highScore}</span>
-        </header>
+        <div className="header-root">
+            <header>
+                <p className="header-title">Pokemon Memory Game</p>
+                <div style={{display:"flex"}}>
+                    <p className="score current-score">Score: {score}</p>
+                    <p className="score high-score">High Score: {highScore}</p>
+                </div>
+            </header>
+        </div>
         </>
     );
 }

@@ -26,7 +26,7 @@ function App() {
         clickedOn={clickedOn} 
         setClickedOn={setClickedOn}
       />
-      <footer><img src="" alt="" /> <a href="https://github.com/joshkat"><img src="/github-mark.svg" alt="github_logo" /></a></footer>
+      <footer>2023 Katayev &ensp; <a href="https://github.com/joshkat/memory-card-game"><img src="/github-mark.svg" alt="github_logo" /></a></footer>
     </>
   );
 }

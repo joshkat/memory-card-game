@@ -1,5 +1,33 @@
+html, body{
+  margin: 0;
+  height: 100%;
+  background-color: rgb(200,200,200);
+}
+
 #root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
+  height: 100%;
+}
+
+footer{
+  font-family: monospace;
+  background-color: #383838;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding-top: 5px;
+  height: 5vh;
+  width: 100%;
+}
+
+footer img{
+  height: 3vh;
 }
 
 body {
