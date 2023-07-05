@@ -7,10 +7,17 @@ import { noDuplicatesRandArr } from "./modules/noDuplicates";
 
 function App() {
   const [idArray, setIdArray] = useState(noDuplicatesRandArr(12, 151));
+  const [clickedOn, setClickedOn] = useState([]);
 
   return (
     <>
-      <CardsView idArray={idArray} setIdArray={setIdArray}/>
+      <p>Score: {clickedOn.length}</p>
+      <CardsView 
+        idArray={idArray} 
+        setIdArray={setIdArray} 
+        clickedOn={clickedOn} 
+        setClickedOn={setClickedOn}
+      />
     </>
   );
 }

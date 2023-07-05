@@ -9,15 +9,21 @@ export function noDuplicatesRandArr(length, highestNum){
     //generate random number array of length
     let randomNumArr = Array.from({length: length}, () => Math.floor(Math.random() * highestNum + 1));
     
-    randomNumArr = removeDuplicates(randomNumArr, highestNum);
+    randomNumArr = replaceDuplicates(randomNumArr, highestNum);
 
     //shuffle/convert to array and return
     return (shuffle(randomNumArr));
 }
 
 //removes duplicates and keeps adding nums until length of inital array is reached
-function removeDuplicates(array, highestNum){
+export function replaceDuplicates(array, highestNum){
     const returnArr = new Set(array);
+
+    //prevent inf loop, return shuffled arr of numbers 0-length
+    if(highestNum <= array.length){
+        const returnArr = Array.from({ length }, (_, index) => index);
+        return shuffle(returnArr);
+    }
 
     //add random numbers which are new until length req is reached
     while (returnArr.size < array.length) {
