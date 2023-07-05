@@ -2,32 +2,20 @@ import cryptoRandomString from "crypto-random-string";
 import PropType from "prop-types";
 import Card from "./Card";
 import "../css/CardsView.css";
+import { noDuplicatesRandArr, shuffle } from "../modules/noDuplicates";
 
 export default function CardsView({ idArray, setIdArray }) {
   function handleCardClick(id) {
-    //select 1-4 pokemon from arr, and the one just picked
-    const amount = Math.floor(Math.random() * 4 + 1)
-    let selected = [id];
-    selected.push(...idArray.slice(0,amount));
+    //select 1-6 pokemon from og arr
+    const amount = Math.floor(Math.random() * 6 + 1)
+    let selected = [...idArray.slice(0,amount)];
+    
+    //generate new arr without duplicates 
+    let newArr = noDuplicatesRandArr(12, 151);
+    newArr = [...new Set([...newArr, ...selected])].slice(0,11);
 
-    //create new arr with 12-amount new pokemon and push in old pokemon
-    let newArr = Array.from({length: 12 - (amount + 1)}, () => Math.floor(Math.random() * 151 + 1));
-    newArr.push(...selected);
-
-
-    // Remove duplicates from the array
-    newArr = Array.from(new Set(newArr));
-
-    // If the array length is less than 12, generate additional random numbers until it reaches 12
-    while (newArr.length < 12) {
-      const randomNumber = Math.floor(Math.random() * 151 + 1);
-      if (!newArr.includes(randomNumber)) {
-        newArr.push(randomNumber);
-      }
-    }
-
-    //shuffle array one last time so old pokemon arent in same position each time and setIdArr
-    newArr = newArr.sort(() => 0.5 - Math.random());
+    //ensure one picked will be in new arr and shuffle
+    newArr = shuffle([...newArr, id]);
     setIdArray(newArr);
   }
 

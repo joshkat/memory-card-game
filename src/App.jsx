@@ -1,25 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import CardsView from "./components/CardsView";
 import "./css/App.css";
 
-function App() {
-  const [idArray, setIdArray] = useState([]);
-  useEffect(() => {
-    //get 12 numbers to use for game
-    const tempArray = [];
-    for (let i = 0; i < 12; i++) {
-      const randomId = Math.floor(Math.random() * 151 + 1);
+import { noDuplicatesRandArr } from "./modules/noDuplicates";
 
-      //prevents duplicates
-      if (tempArray.includes(randomId)) {
-        i--;
-      } else {
-        tempArray.push(randomId);
-      }
-    }
-    setIdArray(tempArray);
-  }, []);
+function App() {
+  const [idArray, setIdArray] = useState(noDuplicatesRandArr(12, 151));
 
   return (
     <>
