@@ -14,6 +14,18 @@ export default function CardsView({ idArray, setIdArray }) {
     let newArr = Array.from({length: 12 - (amount + 1)}, () => Math.floor(Math.random() * 151 + 1));
     newArr.push(...selected);
 
+
+    // Remove duplicates from the array
+    newArr = Array.from(new Set(newArr));
+
+    // If the array length is less than 12, generate additional random numbers until it reaches 12
+    while (newArr.length < 12) {
+      const randomNumber = Math.floor(Math.random() * 151 + 1);
+      if (!newArr.includes(randomNumber)) {
+        newArr.push(randomNumber);
+      }
+    }
+
     //shuffle array one last time so old pokemon arent in same position each time and setIdArr
     newArr = newArr.sort(() => 0.5 - Math.random());
     setIdArray(newArr);
