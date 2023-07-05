@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Header from "./components/Header";
 import CardsView from "./components/CardsView";
 import "./css/App.css";
 
@@ -18,15 +19,15 @@ function App() {
 
   return (
     <>
-      <p>Score: {clickedOn.length} <br /> High Score: {highScore}</p>
+      <Header score={clickedOn.length} highScore={highScore}/>
       <CardsView 
         idArray={idArray} 
         setIdArray={setIdArray} 
         clickedOn={clickedOn} 
         setClickedOn={setClickedOn}
       />
+      <footer><img src="" alt="" /> <a href="https://github.com/joshkat"><img src="/github-mark.svg" alt="github_logo" /></a></footer>
     </>
   );
 }
-
 export default App;
