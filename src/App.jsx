@@ -12,8 +12,15 @@ function App() {
   const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
-    if(clickedOn.length >= highScore){
+    const storedHighScore = localStorage.getItem("highScore");
+    if (storedHighScore !== null) {
+      const parsedHighScore = parseInt(storedHighScore);
+      setHighScore(parsedHighScore);
+    }
+
+    if(clickedOn.length > highScore){
       setHighScore(clickedOn.length);
+      localStorage.setItem("highScore", `${clickedOn.length}`);
     }
   }, [clickedOn, highScore, setHighScore])
 
